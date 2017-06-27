@@ -1,0 +1,70 @@
+{% extends 'music/base_user.html' %}
+{% block title %}Add a New Album{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block content %}
+<br>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-7 r-form-1-box wow fadeInUp" style="background-color: #221F1F">
+            <div class="r-form-1-top">
+                <div class="r-form-1-top-left">
+                    <h3>Add Album</h3>
+                </div>
+                <div class="r-form-1-top-right">
+                    <i class="glyphicon glyphicon-cd"></i>
+                </div>
+            </div>
+            <div class="r-form-1-bottom">
+                <form role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if error_message %}
+                    <div class="col-sm-10">
+                        <span class="text-danger"><span class="fa fa-exclamation-triangle">&nbsp;</span>{{ error_message }}</span>
+                    </div>
+                    {% endif %}
+                    <!--{% include 'music/form_template.html' %}-->
+                    <div class="form-group">
+                        <label class="sr-only" for="artist">Artist</label>
+                        <input type="text" name="artist" placeholder="Artist..." class="r-form-1 form-control" id="artist" required="True">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="album_title">Album Title</label>
+                        <input type="text" name="album_title" placeholder="Album Title..." class="form-control" id="album_title" required="True">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="genre">Genre</label>
+                        <input type="text" name="genre" placeholder="Genre..." class="form-control" id="genre" required="True">
+                    </div>
+                    <label class="custom-file-upload">
+                        <input type="file" name="album_logo" class="form-control" id="album_logo" required="True" accept=".jpg, .jpeg, .png, .gif">
+                        <span class="fa fa-upload"></span>&nbsp;Upload Album Logo
+                    </label>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Add Album</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default r-form-1-box wow fadeInUp" style="background-color: #221F1F">
+                <div class="panel-body">
+                    <h3>How do I add music?</h3>
+                    <p>First, create a new album by filling out the form on this page. Once an album is created you will be able to add/upload songs.</p>
+                    <h3>What are some Album logo best practices?</h3>
+                    <ul style="list-style: none;">
+                        <li>Have a resolution of 512x512</li>
+                        <li>Use common image formats such as .JPG, .JPEG, .GIF, or .PNG</li>
+                        <li>Remain under the 2MB limit.</li>
+                        <li>Square images look best</li>
+                    </ul>
+                </div>
+            </div>
+        </div>       
+
+    </div>
+
+</div>
+{% endblock %}

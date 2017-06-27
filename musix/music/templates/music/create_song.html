@@ -1,0 +1,76 @@
+{% extends 'music/base_user.html' %}
+{% block title %}Add a New Song{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default" style="background-color: #221F1F;">
+                <div class="panel-body">
+                        <a href="{% url 'music:detail' album.id %}">
+                            {% if album.album_logo %}
+                                <img src="{{ album.album_logo.url }}" class="img-responsive">
+                            {% else %}
+                                <h3>No image to display</h3>
+                            {% endif %}
+                        </a>
+                    <h1>{{ album.album_title }} <small>{{ album.genre }}</small></h1>
+                    <h2>{{ album.artist }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation"><a href="{% url 'music:detail' album.id %}">View All</a></li>
+                <li role="presentation" class="active"><a href="{% url 'music:create_song' album.id %}">Add New Song</a></li>
+            </ul>
+
+            <div class="col-sm-12 col-md-7 r-form-1-box wow fadeInUp" style="background-color: #221F1F">
+            <div class="r-form-1-top">
+                <div class="r-form-1-top-left">
+                    <h3>Add Song</h3>
+                </div>
+                <div class="r-form-1-top-right">
+                    <i class="fa fa-music"></i>
+                </div>
+            </div>
+            <div class="r-form-1-bottom">
+                <form role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if error_message %}
+                    <div class="col-sm-10">
+                        <span class="text-danger"><span class="fa fa-exclamation-triangle">&nbsp;</span>{{ error_message }}</span>
+                    </div>
+                    {% endif %}
+                    <!--{% include 'music/form_template.html' %}-->
+                    <div class="form-group">
+                        <label class="sr-only" for="song_title">Song Title</label>
+                        <input type="text" name="song_title" placeholder="Song Title..." class="r-form-1 form-control" 
+                        id="song_title" required="True">
+                    </div>
+                    <label class="custom-file-upload">
+                        <input type="file" name="audio_file" class="form-control" id="audio_file" required="True" accept=".mp3, .wav, .ogg">
+                        <span class="fa fa-upload"></span>&nbsp;Upload Song
+                    </label>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Add Song</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

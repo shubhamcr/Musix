@@ -1,0 +1,247 @@
+{% extends 'music/base.html' %}
+
+{% block title %}
+	Musix-The Musical Network
+{% endblock %}
+
+
+{% block content %}
+
+	<!--Top content-->
+
+ 		<!--For extra small devices-->
+		<div class="visible-xs top-cont">
+						<div style="position: relative; width: 100%; margin: 0; padding: 0;">
+							<img id="imge" src="../../static/img/backgrounds/G768px.jpg" alt="Background image of headphones" class="img-responsive visible-xs" style="position: absolute;">
+							<div class="col-xs-12 text">
+								<h1 class="wow fadeInLeftBig">Musix</h1>
+									<p class="wow fadeInLeftBig" style="opacity: 0.8;">
+										Your very own exclusive MUSICAL network. Explore!!!...
+									</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 r-form-1-box wow fadeInUp">
+								<div class="r-form-1-top">
+									<div class="r-form-1-top-left">
+										<h3>Log In</h3>
+									</div>
+									<div class="r-form-1-top-right">
+										<i class="fa fa-pencil"></i>
+									</div>
+								</div>
+								<div class="r-form-1-bottom">
+									<form role="form" action="" method="post">
+									{% csrf_token %}
+									{% if error %}
+									<p>
+            							<span class="text-danger"><b><span class="fa fa-exclamation-triangle"></span>&nbsp;
+            							{{ error }}</b></span>
+        							</p>
+        							{% endif %}
+										<div class="input-group">
+            								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            								<label class="sr-only" for="username">Username</label>
+           				 					<input id="username" type="text" class="form-control input-lg" name="username" placeholder="Username">
+          								</div>
+          								
+          								<div class="input-group">
+            								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            								<label class="sr-only" for="password">Password</label>
+            								<input id="password" type="password" class="form-control input-lg" name="password" placeholder="Password">
+          								</div>
+          								
+										<button type="submit" class="btn">Log me in!</button>
+									</form>
+								</div>
+							</div>
+						</div>
+		</div>
+
+		<!-- For small medium large devices-->
+		<div class="visible-sm visible-md visible-lg top-cont bg">			
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8 col-sm-offset-2 text">
+							<h1 class="wow fadeInLeftBig">Musix</h1>
+							<div class="description wow fadeInLeftBig">
+								<p>
+									Your very own exclusive MUSICAL network. Listen to what your peers are listening or choose from our vast repository of exclusive songs. Check out whats trending right now!
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3 r-form-1-box wow fadeInUp" style="background-color: #221F1F">
+							<div class="r-form-1-top">
+								<div class="r-form-1-top-left">
+									<h3>Log In</h3>
+								</div>
+								<div class="r-form-1-top-right">
+									<i class="fa fa-pencil"></i>
+								</div>
+							</div>
+							<div class="r-form-1-bottom">
+								<form role="form" action="" method="post">
+								{% csrf_token %}
+								{% if error %}
+									<p>
+            							<span class="text-danger"><b><span class="fa fa-exclamation-triangle"></span>&nbsp;
+            							{{ error }}</b></span>
+        							</p>
+        						{% endif %}
+									<div class="form-group input-group">
+            							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            							<label class="sr-only" for="username">Username</label>
+           				 				<input id="username" type="text" class="form-control input-lg" name="username" placeholder="Username">
+          							</div>
+          							
+          							<div class="form-group input-group">
+            							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            							<label class="sr-only" for="password">Password</label>
+            							<input id="password" type="password" class="form-control input-lg" name="password" placeholder="Password">
+          							</div>
+          							
+									<button type="submit" class="btn">Log me in!</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		</div>
+
+<!-- Why you should join -->
+        <div class="features-container section-container">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12 features section-description wow fadeIn">
+	                    <h2>Why You Should Join?</h2>
+	                    <div class="divider-1 wow fadeInUp">. . . . . . . . . .</div>
+	                    <p>Music is the greatest communication in the world. Even if people don't understand the language that you're singing in, they still know good music when they hear it.</p>
+	                </div>
+	            </div>
+	            <div class="row">
+                	<div class="col-sm-4 features-box wow fadeInUp">
+	                	<div class="features-box-icon"><span class="glyphicon glyphicon-music"></span></div>
+	                    <h3>Expand your playlist</h3>
+	                    <p>Build and expand your playlist of favourite songs indefinitely.</p>
+                    </div>
+                    <div class="col-sm-4 features-box wow fadeInDown">
+	                	<div class="features-box-icon"><span class="glyphicon glyphicon-user"></span></div>
+	                    <h3>Connect &amp; Explore</h3>
+	                    <p>Connect with other users with similar genre interests and explore their playslist.</p>
+                    </div>
+                    <div class="col-sm-4 features-box wow fadeInUp">
+	                	<div class="features-box-icon"><span class="glyphicon glyphicon-thumbs-up"></span></div>
+	                    <h3>Make your fav song trending</h3>
+	                    <p>Upvote your favourite song to make it feature in the trending songs list.</p>
+                    </div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-sm-12 section-bottom-button wow fadeInUp">
+                        <a class="btn btn-link-1" href="{% url 'music:register' %}">Sign Up Now <i class="fa fa-angle-right"></i></a>
+	            	</div>
+	            </div>
+	        </div>
+        </div>
+
+<!-- How it all works -->
+        <div class="faq-container section-container">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12 faq section-description wow fadeIn">
+	                    <h2>How it all works?</h2>
+	                    <div class="divider-1 wow fadeInUp">. . . . . . . . . .</div>
+	                    <p>
+	                    	Musix is all about creating a personalised collection of playlists and albums on cloud which can be 
+	                    	accesed from anywhere by any device. It allows a user to explore the song collection of other users. 
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="row">
+                	<div class="col-sm-4 col-sm-offset-1 faq-box wow fadeInUp">
+	                	<div class="faq-number">1</div>
+	                    <h3>What can I do with this web app?</h3>
+	                    <p>Musix is an app that allows you to upload and store all of your music on the cloud.</p>
+	                    <p>You can access your or other users music collection from anywhere through any device.</p>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-2 faq-box wow fadeInDown">
+	                	<div class="faq-number">2</div>
+	                    <h3>How do I upload my music?</h3>
+	                    <p>Just register on the website and you will be taken to your profile page.</p>
+	                    <p>You can upload all the albums, songs and playlists there. </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-1 faq-box wow fadeInUp">
+	                	<div class="faq-number">3</div>
+	                    <h3>How do I explore other users playlists?</h3>
+	                    <p>You need to have an account for that.</p>
+	                    <p>Log in and then just search the username of the person whose playlist you want to explore.</p>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-2 faq-box wow fadeInDown">
+	                	<div class="faq-number">4</div>
+	                    <h3>What all audio formats are suppported?</h3>
+	                    <p>Currently we support only mp3, wav and ogg audio formats.</p>
+	                    <p>We will be adding other audio formats soon.</p>
+                    </div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-sm-12 section-bottom-button wow fadeInUp">
+                        <a class="btn btn-link-1 scroll-link" href="{% url 'music:register' %}">Sign Up Now <i class="fa fa-angle-right"></i></a>
+	            	</div>
+	            </div>
+	        </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+	        <div class="container">
+	        	<div class="row">
+	        		<div class="col-sm-4 footer-about wow fadeInUp">
+	        			<h3>About Us</h3>
+	        			<p>
+	        				An engineer who is insanely passionate about coding, football and music ofcourse.
+	        			</p>
+	        			
+                    </div>
+	        		<div class="col-sm-4 footer-contact-info wow fadeInDown">
+	        			<h3>Contact Info</h3>
+	                	<p><i class="fa fa-user"></i> Shubham Prasad Singh</p>
+	                	<p><i class="fa fa-phone"></i> Phone: XXXXXXXXXX</p>
+	                	<p><i class="fa fa-envelope"></i> Email: <a href="mailto:sprasad3101@gmail.com">sprasad3101@gmail.com</a></p>
+	                	<!-- <p><i class="fa fa-skype"></i> Skype: </p> -->
+                    </div>
+                    <div class="col-sm-4 footer-social wow fadeInUp">
+                    	<h3>We're Social</h3>
+                    	<p>
+	                    	<a href="#"><i class="fa fa-facebook"></i></a> 
+							<a href="#"><i class="fa fa-twitter"></i></a> 
+							<a href="#"><i class="fa fa-google-plus"></i></a> 
+							<a href="#"><i class="fa fa-instagram"></i></a> 
+							<a href="#"><i class="fa fa-pinterest"></i></a>
+						</p>
+                    </div>
+	            </div>
+	            <div class="row">
+           			<div class="col-sm-6 footer-copyright">
+                    	&copy;MUSIX
+                    </div>
+           			<div class="col-sm-6 footer-menu">
+                    	<ul>
+							<li><a href="#">Terms</a></li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+                    </div>
+           		</div>
+	        </div>
+        </footer>
+
+
+
+	
+
+
+{% endblock %}

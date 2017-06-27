@@ -1,0 +1,93 @@
+{% extends 'music/base_user.html' %}
+{% block title %}Musix - Search User{% endblock %}
+{% block content %}
+
+{% if error %}
+
+<h3 class="text text-danger">
+	<b><span class="fa fa-times">{{ error }}</b>
+</h3>
+
+{% else %}
+
+<div class="albums-container container-fluid">
+
+    <!--Searched user's Albums -->
+    <div class="row">
+    	<div class="panel-group" id="accordion">
+    		<div class="panel panel-success">
+    			<div class="panel-heading">
+    				<h3 class="panel-title" style="text-align: left;">
+    					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><b>{{ user_searched_username }}'s Albums</b></a>
+    				</h3>
+    			</div>
+
+    			<div id="collapse1" class="panel-collapse collapse fade in">
+    				<div class="panel-body">
+    					{% if user_searched_albums %}
+    					{% for user_searched_album in user_searched_albums %}
+    					<div class="col-sm-4">
+    						<div class="thumbnail" style="background-color: #221F1F">
+    							<a href="{% url 'music:search_user_album_detail' user_searched_album.id %}">
+    								<img src="{{ user_searched_album.album_logo.url }}" class="img-responsive">
+    							</a>
+    							<div class="caption">
+    								<h2>{{ user_searched_album.album_title }} <small>{{ user_searched_album.genre }}</small></h2>
+    								<h3>{{ user_searched_album.artist }}</h3>
+
+    								<!-- View Details -->
+    								<a href="{% url 'music:search_user_album_detail' user_searched_album.id %}" class="btn btn-primary btn-sm" role="button">
+    									View Details
+    								</a>
+
+    							</div>
+    						</div>
+    					</div>
+    					{% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+    					{% endfor %}
+    					{% else %}
+    					<div class="col-sm-12">
+    						<br>
+    						<h3>
+    							No Albums to display!!!...
+    						</h3>
+    					</div>
+    					{% endif %}
+    				</div>
+    			</div>
+    		</div>
+
+    		<div class="panel panel-success">
+    			<div class="panel-heading">
+    				<h3 class="panel-title" style="text-align: left;">
+    					<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><b>{{ user_searched_username }}'s Playlists</b>
+    					</a>
+    				</h3>
+    			</div>
+
+    			<div id="collapse2" class="panel-collapse collapse" fade>
+    				<div class="panel-body">
+    					{% if user_searched_albums %}
+    					<h3>
+    						Empty!!!...
+    					</h3>
+    					{% else %}
+    					<div class="col-sm-12">
+    						<br>
+    						<h3>
+    							No Playlists to display!!!...
+    						</h3>
+    					</div>
+    					{% endif %}
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+</div>
+
+{% endif %}
+
+
+{% endblock %}
